@@ -49,13 +49,12 @@ function isHabitablePlanet(planet: KeplerPlanet) {
 }
 
 async function loadPlanetsData(filePath: string): Promise<KeplerPlanet[]> {
-
   await access(filePath, constants.R_OK, (err) => {
     if (err) {
       throw new Error(`File at path ${filePath} is not accessible`);
     }
   });
-  
+
   return new Promise<KeplerPlanet[]>((resolve, reject) => {
     const habitablePlanets: KeplerPlanet[] = [];
     createReadStream(filePath)
@@ -64,7 +63,7 @@ async function loadPlanetsData(filePath: string): Promise<KeplerPlanet[]> {
           comment: "#",
           columns: true,
           cast: true,
-          cast_date: false
+          cast_date: false,
         })
       )
       .on("data", (data: KeplerPlanet) => {
@@ -91,12 +90,14 @@ async function main() {
       console.log(`  - ${planet.kepler_name || planet.kepoi_name}`);
     });
     console.log(`\nTotal Earth-like planets: ${habitablePlanets.length}`);
-  }
-  catch (error) {
+  } catch (error) {
     if (error instanceof Error) {
       console.error(`Failed to process planets data: ${error.message}`);
     } else {
-      console.error('An unknown error occurred while processing planets data.', error);
+      console.error(
+        "An unknown error occurred while processing planets data.",
+        error
+      );
     }
     process.exit(1);
   }
