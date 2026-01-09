@@ -1,0 +1,8 @@
+{
+  "name": "planets",
+  "version": "1.0.0",
+  "description": "planets project parse Kepler data",
+  "main": "index.js",
+  "repository": "https://github.com/dhananjay-jadhav/planets.git",
+  "license": "MIT"
+}
