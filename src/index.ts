@@ -57,6 +57,6 @@ createReadStream("data/kepler_planets.csv")
     console.error(err);
   })
   .on("end", () => {
-    console.log(results);
+    console.log(results.map(planet => planet.kepler_name))
     console.log("Number of plantes like earth", results.length);
   });
