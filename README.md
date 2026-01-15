@@ -4,21 +4,17 @@ This project parses Kepler data to find habitable planets.
 
 ## Installation
 
-1. Clone the repository:
+1. Install package:
    ```bash
-   git clone https://github.com/dhananjay-jadhav/planets.git
-   ```
-2. Install dependencies:
-   ```bash
-   yarn install
+   yarn add kepler-planets
    ```
 
 ## Usage
 
-To run the project, use the following command:
+To get the kepler planets data, use the following command:
 
 ```bash
-yarn dev
+initializePlanetsData
 ```
 
 This will execute the script to parse the Kepler data and log the habitable planets found.
