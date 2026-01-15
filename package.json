@@ -1,6 +1,6 @@
 {
   "name": "kepler-planets",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This project parses Kepler data to find habitable planets.",
   "main": "src/index.ts",
   "repository": "https://github.com/dhananjay-jadhav/planets.git",
@@ -9,6 +9,13 @@
     "build": "tsc",
     "dev": "ts-node src/index.ts",
     "test": "jest"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "dependencies": {
     "csv-parse": "^6.1.0",

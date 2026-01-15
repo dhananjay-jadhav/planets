@@ -8,7 +8,7 @@ const HABITABILITY_THRESHOLDS = {
   MAX_PLANET_RADIUS: 1.6,
 };
 
-interface KeplerPlanet {
+export interface KeplerPlanet {
   kepid: string;
   kepoi_name: string;
   kepler_name: string;
