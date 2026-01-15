@@ -46,7 +46,7 @@ function isHabitablePlanet(planet: KeplerPlanet) {
   );
 }
 
-async function loadPlanetsData(filePath: string): Promise<KeplerPlanet[]> {
+async function loadPlanetsCSVFile(filePath: string): Promise<KeplerPlanet[]> {
   await access(filePath, constants.R_OK, (err) => {
     if (err) {
       throw new Error(`File at path ${filePath} is not accessible`);
@@ -79,20 +79,18 @@ async function loadPlanetsData(filePath: string): Promise<KeplerPlanet[]> {
 }
 
 
-export const habitablePlanets: KeplerPlanet[] = [];
-
-export async function initializePlanetsData() {
+export async function getPlanetsData(): Promise<KeplerPlanet[]> {
   const dataPath = join(process.cwd(), "data", "kepler_planets.csv");
   try {
-    const planets = await loadPlanetsData(dataPath);
+    const habitablePlanets = await loadPlanetsCSVFile(dataPath);
 
-    const habitablePlanets = planets;
 
     console.log("Habitable planets found:");
     habitablePlanets.forEach((planet) => {
       console.log(`  - ${planet.kepler_name || planet.kepoi_name}`);
     });
     console.log(`\nTotal Earth-like planets: ${habitablePlanets.length}`);
+    return habitablePlanets;
   } catch (error) {
     if (error instanceof Error) {
       console.error(`Failed to process planets data: ${error.message}`);
