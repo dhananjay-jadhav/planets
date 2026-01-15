@@ -1,12 +1,12 @@
 {
   "name": "kepler-planets",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "This project parses Kepler data to find habitable planets.",
   "main": "src/index.ts",
   "repository": "https://github.com/dhananjay-jadhav/planets.git",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && cp -r src/data dist/data",
+    "build": "tsc && cp -r data dist/data",
     "dev": "ts-node src/index.ts",
     "test": "jest"
   },

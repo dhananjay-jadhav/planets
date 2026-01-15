@@ -80,7 +80,7 @@ async function loadPlanetsCSVFile(filePath: string): Promise<KeplerPlanet[]> {
 
 
 export async function getPlanetsData(): Promise<KeplerPlanet[]> {
-  const dataPath = join(process.cwd(), "src/data", "kepler_planets.csv");
+  const dataPath = join(process.cwd(), "data", "kepler_planets.csv");
   try {
     const habitablePlanets = await loadPlanetsCSVFile(dataPath);
 
@@ -103,5 +103,3 @@ export async function getPlanetsData(): Promise<KeplerPlanet[]> {
     process.exit(1);
   }
 }
-
-getPlanetsData();
