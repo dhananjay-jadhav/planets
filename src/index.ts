@@ -1,6 +1,11 @@
 import { parse } from "csv-parse";
 import { access, constants, createReadStream } from "fs";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const HABITABILITY_THRESHOLDS = {
   MIN_INSOLATION: 0.36,
@@ -80,7 +85,7 @@ async function loadPlanetsCSVFile(filePath: string): Promise<KeplerPlanet[]> {
 
 
 export async function getPlanetsData(): Promise<KeplerPlanet[]> {
-  const dataPath = join(process.cwd(), "data", "kepler_planets.csv");
+  const dataPath = join(__dirname, "../data/kepler_planets.csv");
   try {
     const habitablePlanets = await loadPlanetsCSVFile(dataPath);
 
