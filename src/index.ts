@@ -79,12 +79,14 @@ async function loadPlanetsData(filePath: string): Promise<KeplerPlanet[]> {
 }
 
 
-const habitablePlanets: KeplerPlanet[] = [];
+export const habitablePlanets: KeplerPlanet[] = [];
 
 export async function initializePlanetsData() {
   const dataPath = join(process.cwd(), "data", "kepler_planets.csv");
   try {
-    const habitablePlanets = await loadPlanetsData(dataPath);
+    const planets = await loadPlanetsData(dataPath);
+
+    const habitablePlanets = planets;
 
     console.log("Habitable planets found:");
     habitablePlanets.forEach((planet) => {

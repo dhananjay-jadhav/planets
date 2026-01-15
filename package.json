@@ -1,6 +1,6 @@
 {
   "name": "planets",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "This project parses Kepler data to find habitable planets.",
   "main": "src/index.ts",
   "repository": "https://github.com/dhananjay-jadhav/planets.git",
