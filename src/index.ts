@@ -37,8 +37,6 @@ interface KeplerPlanet {
   koi_kepmag: number;
 }
 
-const results: KeplerPlanet[] = [];
-
 function isHabitablePlanet(planet: KeplerPlanet) {
   return (
     planet.koi_disposition.toLowerCase() === "confirmed" &&
@@ -80,7 +78,10 @@ async function loadPlanetsData(filePath: string): Promise<KeplerPlanet[]> {
   });
 }
 
-async function main() {
+
+const habitablePlanets: KeplerPlanet[] = [];
+
+export async function initializePlanetsData() {
   const dataPath = join(process.cwd(), "data", "kepler_planets.csv");
   try {
     const habitablePlanets = await loadPlanetsData(dataPath);
@@ -102,5 +103,3 @@ async function main() {
     process.exit(1);
   }
 }
-
-main();
